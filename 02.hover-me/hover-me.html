@@ -6,31 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
-      .box {
-        width: 200px;
-        height: 200px;
-        border: 1px solid red;
-        position: relative;
-      }
-      .children-box {
-        position: absolute;
-        display: inline;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: yellow;
-        margin: auto;
-        width: 100px;
-        height: 100px;
+      .app {
+        display: block;
+        color: red;
+        /* width: 100px;
+        height: 20px; */
+        transform: scale(0.5, 0.5);
       }
     </style>
   </head>
   <body>
-    <div id="app">
-      <div class="box">
-        <div class="children-box">111111</div>
-      </div>
-    </div>
+    <div class="app"></div>
   </body>
 </html>
