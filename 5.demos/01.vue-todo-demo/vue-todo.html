@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>vue-todo</title>
+  <style type="text/css">
+    .edit {
+      display: block;
+      width: 50%;
+      height: 35px;
+      line-height: 35px;
+      margin: 30px auto;
+      box-sizing: border-box;
+      padding-left: 4px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      outline: 0;
+      box-shadow: 0 0 5px #ccc;
+    }
+    .list {
+      margin: 0 auto;
+      width: 50%;
+    }
+    .unit {
+      padding: 10px 0;
+      border-bottom: 1px solid #efefef;
+      position: relative;
+    }
+    .unit:last-child {
+      border-bottom: 0;
+    }
+    .finish {
+      color: #ccc;
+      text-decoration: line-through;
+    }
+    .del {
+      background-color: red;
+      text-decoration: none;
+      position: absolute;
+      right: 0;
+      font-size: 14px;
+      outline: 0;
+      padding: 2px 5px;
+      border-radius: 5px;
+      color: #fff;
+      border: 0;
+    }
+    .empty {
+      font-size: 15px;
+      text-align: center;
+      color: #ccc;
+      padding: 10px 0;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <input type="text" class="edit" v-model="task.content" placeholder="请输入任务名称" @keydown.enter="addTask">
+    <p class="empty">暂无任务</p>
+    <div class="list">
+      <div class="unit" v-for="(item,index) in list">
+        <input type="checkbox" @click="changeState(index)">
+        <span :class="{'finish': item.finished}">{{item.content}}</span>
+        <button class="del" @click="delTask(index)">删除</button>
+      </div>
+    </div>
+  </div>
+  <script src="js/vue.min.js"></script>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        task: {
+          content: '',
+          finished: false,
+          deleted: false
+        },
+        list: []
+      },
+      methods: {
+        addTask: function() {
+          this.list.push(this.task)
+          this.task = {
+            content: '',
+            finished: false,
+            deleted: false
+          }
+        },
+        delTask: function(idx) {
+          this.list[idx].deleted = true
+          this.list.splice(idx, 1)
+        },
+        changeState: function(idx) {
+          this.list[idx].finished = true
+        }
+      }
+    })
+  </script>
+</body>
+</html>
