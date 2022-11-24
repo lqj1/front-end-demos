@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      margin: 0 auto;
+    }
+    .container {
+      width: 300px;
+      margin: 10px auto;
+    }
+    #btn-group {
+      margin: 10px auto;
+      text-align: center;
+    }
+    #box {
+      width: 200px;
+      height: 200px;
+      margin: 0 auto;
+      background-color: beige;
+    }
+  </style>
+</head>
+<body>
+  <!-- 控制区 -->
+  <div class="container">
+      <div id="btn-group">
+        <button>变宽</button>
+        <button>变高</button>
+        <button>变色</button>
+        <button>隐藏</button>
+        <button>重置</button>
+      </div>
+  </div>
+  <!-- 展示区 -->
+  <div id="box">
+  </div>
+  <script type="text/javascript">
+    window.onload = function() {
+      let btns = document.getElementsByTagName('button')
+      let attr = ['width','height','background','display', 'display']
+      let val = ['250px','250px','red','none','block']
+      let div = document.getElementById('box')
+      // console.log('btns: ', btns);
+      for(let i = 0; i < btns.length; i++) {
+        btns[i].onclick = function() {
+          // 这里是重置样式，不是将类名改变
+          // div.className = ''
+          div.style.cssText = ''  // 重置所有样式不会删除内联的css样式
+          changeStyle(div,attr[i],val[i])
+        }
+      }
+    }
+    function changeStyle(el,attr,val) {
+      el.style[attr] = val
+    }
+  </script>
+</body>
+</html>
