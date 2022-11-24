@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    label {
+      display: block;
+      margin: 5px auto;
+    }
+    #box {
+      width: 160px;
+      height: 160px;
+      color: #fff;
+      background-color: #000;
+    }
+  </style>
+</head>
+<body>
+  <label for="属性名">
+    <input type="text" id="prop-name" value="background">
+  </label>
+  <label for="属性值">
+    <input type="text" id="prop-val" value="blue">
+  </label>
+  <label for="">
+    <button>确定</button>
+    <button>重置</button>
+  </label>
+  <div id="box">在上方输入框输入"属性名"及"属性值"，点击确定按钮查看效果</div>
+  <script type="text/javascript">
+    function changeProp(el, pName, pVal) {
+      el.style[pName] = pVal
+    }
+    window.onload = function() {
+      let btn = document.getElementsByTagName('button')
+      let pName = document.getElementById('prop-name')
+      let pVal = document.getElementById('prop-val')
+      let box = document.getElementById('box')
+      btn[0].onclick = function () {
+        changeProp(box,pName.value,pVal.value)
+      }
+      btn[1].onclick = function () {
+        changeProp(box,pName.value,pVal.value)
+      }
+    }
+  </script>
+</body>
+</html>
